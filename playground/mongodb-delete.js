@@ -9,29 +9,31 @@ MongoClient.connect('mongodb://localhost:27018/TodoApp', (err, client) => {
 
 
 
-    //deleteOne
-    db.collection('Todos')
-        .deleteOne({ text: 'Eat lunch' })
-        .then((response) => {
-            console.log(response);
-        }, (err) => {
-            console.log(err);
-        });
+    // //deleteOne
+    // db.collection('Todos')
+    //     .deleteOne({ text: 'Eat lunch' })
+    //     .then((response) => {
+    //         console.log(response);
+    //     }, (err) => {
+    //         console.log(err);
+    //     });
 
     //deleteMany
-    db.collection('Todos')
-        .deleteMany({ text: 'Eat lunch' })
+    db.collection('Users')
+        .deleteMany({
+            $or: [{ name: 'Vishal' }, { name: 'Knock' }]
+        })
         .then((result) => {
             console.log(result);
         }, (err) => {
             console.log('Unable to delete ' + err);
         });
 
-    //findOneAndDelete
-    db.collection('Todos')
-        .findOneAndDelete({ completed: false })
-        .then((res) => {
-            console.log(res);
-        });
+    // //findOneAndDelete
+    // db.collection('Todos')
+    //     .findOneAndDelete({ completed: false })
+    //     .then((res) => {
+    //         console.log(res);
+    //     });
     client.close();
 });
