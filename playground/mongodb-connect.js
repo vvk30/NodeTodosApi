@@ -38,3 +38,5 @@ MongoClient.connect('mongodb://localhost:27018/TodoApp', (err, client) => {
 
     client.close();
 });
+
+//mongod.exe --port 27018 --dbpath C:/data
